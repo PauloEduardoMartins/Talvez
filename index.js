@@ -23,6 +23,7 @@ mongoose.connect(`mongodb+srv://${user}:${password}@trabalho.a4r7uh4.mongodb.net
     console.log('Erro ao conectar ao servidor no yippe....');
     console.log(err);
 })
+
 const options={
     definition: {
         openapi: '3.0.0',
@@ -38,6 +39,7 @@ const options={
     },
     apis: ['./Rotas/produtoRotas.js'],
 }
+
 const specs = swaggerJs(options);
 const Rotas = require('./Rotas/produtoRotas');
 server.use('/api-docs', Rotas, swagger.serve, swagger.setup(specs));

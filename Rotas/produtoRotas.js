@@ -200,27 +200,6 @@ const mongoose = require('mongoose');
 
 //FUNÇÃO DE ROTAS
 //Checa se o produto tem todos os campos
-function checkProducts(req, res, next) {
-    const { id, nome, descricao, cor, peso, tipo, preço, Data_cadastro } = req.body;
-    if (!id || !nome || !descricao || !cor || !peso || !tipo || !preço || !Data_cadastro) {
-      res.status(400).json({ message: 'Todos os campos são obrigatórios' });
-      return;
-    }
-    if (
-      typeof id !== 'number' || 
-      typeof nome !== 'string' ||
-      typeof descricao !== 'string' ||
-      typeof cor !== 'string' ||
-      typeof peso !== 'number' ||
-      typeof tipo !== 'string' ||
-      typeof preço !== 'number' ||
-      typeof Data_cadastro !== 'number'
-    ) {
-      res.status(400).json({ message: 'Os valores dos campos devem ser do tipo correto' });
-      return;
-    }
-    next();
-}
 function checkProductsPut(req, res, next) {
     const { nome, descricao, cor, peso, tipo, preço, Data_cadastro } = req.body;
     if ( !nome || !descricao || !cor || !peso || !tipo || !preço || !Data_cadastro) {
@@ -289,7 +268,6 @@ rotas.put('/put/:id',checkProductsPut, async (req, res) => {
     const id = (req.params.id);
     console.log(id)
     const { nome, descricao, cor, peso, tipo, preco, Data_cadastro } = req.body;
-
     const infoProdutos = {
         nome,
         descricao,
