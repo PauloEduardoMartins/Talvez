@@ -1,3 +1,4 @@
+const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css"
 const express = require('express');
 const mongoose = require('mongoose');
 const server = express();
@@ -42,7 +43,9 @@ const options={
 
 const specs = swaggerJs(options);
 const Rotas = require('./Rotas/produtoRotas');
-server.use('/api-docs', Rotas, swagger.serve, swagger.setup(specs));
+server.use('/api-docs', Rotas, swagger.serve, swagger.setup(specs, {customCss:
+    '.swagger-ui .opblock .opblock-summary-path-description-wrapper { align-items: center; display: flex; flex-wrap: wrap; gap: 0 10px; padding: 0 10px; width: 100%; }',
+customCssUrl: CSS_URL,}));
 server.use('/api', Rotas);
 
 
