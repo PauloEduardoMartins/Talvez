@@ -305,11 +305,10 @@ rotas.put('/put/:id',checkProductsPut, async (req, res) => {
           res.status(404).json({ message: 'Produto não encontrado' });
           return;
         }
-        
         res.status(200).json({ message: 'Atualizado com sucesso' },{ product: updatedProduct });
       } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Erro ao atualizar o produto' });
+        res.status(500).json({ message: `Erro ao atualizar o produto ${error}` });
       }
 });
 //PUT id hexadecimal do banco de dados porque eu errei mas achei daora dmais para apagar
