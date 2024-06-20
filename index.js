@@ -34,7 +34,7 @@ const options={
         },
         servers: [
             {
-                url: 'http://localhost:3000',
+                url: 'https://trabalho-marcio-6me3d4x3k-pauloeduardomartins-projects.vercel.app/api-docs/',
             },
         ],
     },
